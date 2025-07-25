@@ -11,12 +11,47 @@
       font-family: 'Roboto', Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #1a2639 0%, #0d1b2a 100%);
+      background: #0d1b2a;
       color: #e6d5b8;
       scroll-behavior: smooth;
       overflow-x: hidden;
       transition: background 0.4s, color 0.4s;
-    }.dark-mode {
+      position: relative;
+    }body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.02) 0px,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 4px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.02) 0px,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  z-index: -1;
+  animation: techScroll 30s linear infinite;
+}
+
+@keyframes techScroll {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100px, -100px);
+  }
+}
+
+.dark-mode {
   background: #fff;
   color: #111;
 }
@@ -167,78 +202,3 @@ button[type="submit"] {
 
   </style>
 </head>
-<body>
-  <button class="mode-toggle" onclick="document.body.classList.toggle('dark-mode')">🌓 Toggle Mode</button>  <header>
-    <h1><span id="typed"></span></h1>
-    <img src="me.jpg" alt="Perfect Ikechukwu" class="profile-pic" />
-    <p>Matric Number: 24/208CSC/898</p>
-    <p>Email: <a href="mailto:ikechukwuperfect759@gmail.com">ikechukwuperfect759@gmail.com</a></p>
-    <div class="social-links">
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-x-twitter"></i></a>
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-    </div>
-  </header>  <nav class="navbar">
-    <a href="#past">Past</a>
-    <a href="#present">Present</a>
-    <a href="#future">Future</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>  <main>
-    <section>
-      <h2>Quote of the Day</h2>
-      <p id="quoteBox"></p>
-    </section><section class="fade-in" id="past">
-  <h2>Past: What I Have Done</h2>
-  <p>I have developed skills in <strong>web designing</strong>, creating responsive and user-friendly webpages using HTML and CSS.<br><br><em>"I started with &lt;div&gt; confusion and border-radius frustration — now I style like a boss. Every bug was just a misunderstood feature."</em></p>
-</section>
-
-<section class="fade-in" id="present">
-  <h2>Present: What I Am Doing</h2>
-  <p>Currently a <strong>Computer Science student</strong> at the University of Abuja, focusing on coursework and advancing my programming and design skills.<br><br><em>"Some people binge-watch Netflix... I debug code at 2AM and cry in CSS. But hey, learning is progress!"</em></p>
-</section>
-
-<section class="fade-in" id="future">
-  <h2>Future: What I Plan to Do</h2>
-  <p>I aim to pursue a career in <strong>cybersecurity</strong>, specializing in ethical hacking and network security.<br><br><em>"I don't just want to hack the system... I want to ethically scare people into using strong passwords."</em></p>
-</section>
-
-<section class="fade-in" id="projects">
-  <h2>Projects</h2>
-  <ul>
-    <li><strong>My First Portfolio Website</strong> – Clean, responsive, and animated.</li>
-    <li><strong>Student Login System</strong> – Login/signup system built with HTML/CSS.</li>
-    <li><strong>Anime Download App (Concept)</strong> – UI design for anime lovers.</li>
-  </ul>
-  <a href="Perfect-Ikechukwu-CV.pdf" download class="cv-button">Download My CV</a>
-</section>
-
-<section class="fade-in" id="contact">
-  <h2>Contact Me</h2>
-  <form action="https://formspree.io/f/YOUR_ID" method="POST">
-    <input type="email" name="email" placeholder="Your email" required>
-    <textarea name="message" placeholder="Your message" rows="4" required></textarea>
-    <button type="submit">Send</button>
-  </form>
-</section>
-
-  </main>  <footer>
-    <p>© 2025 Perfect Ikechukwu. All rights reserved.</p>
-  </footer>  <script>
-    new Typed('#typed', {
-      strings: ["Perfect Ikechukwu", "Web Designer", "Future Cybersecurity Expert"],
-      typeSpeed: 60,
-      backSpeed: 40,
-      loop: true
-    });
-
-    const quotes = [
-      "Success is 99% failure – So keep failing upward.",
-      "Don’t wait for opportunity. Create it.",
-      "Even syntax errors teach you something.",
-      "Discipline is remembering what you want.",
-      "Dream big. Debug harder."
-    ];
-    document.getElementById("quoteBox").innerText = quotes[Math.floor(Math.random() * quotes.length)];
-  </script></body>
-</html>
