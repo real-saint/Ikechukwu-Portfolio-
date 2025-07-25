@@ -12,72 +12,44 @@
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: rgba(26, 38, 57, 0.7); /* Semi-transparent dark blue for overlay */
+            background: linear-gradient(135deg, #1a2639 0%, #0d1b2a 100%); /* Realistic gradient base */
             color: #e6d5b8; /* Light beige text */
             scroll-behavior: smooth;
-            perspective: 1000px; /* Enable 3D space */
-            overflow-x: hidden; /* Prevent horizontal scroll from 3D elements */
             position: relative;
+            overflow-x: hidden;
         }
 
-        /* Realistic 3D Background Animation */
-        .background-3d {
+        /* Realistic Background Animation */
+        .background-anim {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #1a2639 0%, #0d1b2a 100%); /* Gradient base */
-            transform-style: preserve-3d;
-            animation: rotate3D 30s infinite linear;
-            z-index: -1; /* Behind content */
+            background: linear-gradient(135deg, rgba(26, 38, 57, 0.8) 0%, rgba(13, 27, 42, 0.8) 100%);
+            z-index: -1;
             overflow: hidden;
         }
 
-        .background-3d::before,
-        .background-3d::after {
+        .background-anim::before,
+        .background-anim::after {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(44, 62, 80, 0.2) 0%, transparent 70%); /* Star-like particles */
-            animation: floatParticles 15s infinite ease-in-out;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(44, 62, 80, 0.3) 0%, transparent 70%);
+            animation: waveMotion 20s infinite ease-in-out;
         }
 
-        .background-3d::after {
-            animation-delay: -7.5s; /* Staggered animation */
-            background: radial-gradient(circle, rgba(13, 27, 42, 0.2) 0%, transparent 70%);
+        .background-anim::after {
+            animation-delay: -10s; /* Staggered animation */
+            background: radial-gradient(circle, rgba(13, 27, 42, 0.3) 0%, transparent 70%);
         }
 
-        .background-3d .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(230, 213, 184, 0.8); /* Light beige particles */
-            border-radius: 50%;
-            animation: moveParticle 20s infinite linear;
-        }
-
-        .background-3d .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
-        .background-3d .particle:nth-child(2) { left: 30%; top: 50%; animation-delay: 5s; }
-        .background-3d .particle:nth-child(3) { left: 70%; top: 30%; animation-delay: 10s; }
-        .background-3d .particle:nth-child(4) { left: 50%; top: 70%; animation-delay: 15s; }
-
-        @keyframes rotate3D {
-            0% { transform: rotateX(0deg) rotateY(0deg); }
-            100% { transform: rotateX(360deg) rotateY(360deg); }
-        }
-
-        @keyframes floatParticles {
-            0% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.2); }
-            100% { transform: translateY(0) scale(1); }
-        }
-
-        @keyframes moveParticle {
-            0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
-            50% { transform: translate(50px, -50px) scale(0.5); opacity: 0.4; }
-            100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+        @keyframes waveMotion {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); }
         }
 
         /* Header Styling */
@@ -94,13 +66,13 @@
             margin: 0;
             font-size: 2.8rem;
             font-weight: 700;
-            animation: typing 2.5s steps(30, end), blink-caret 0.75s step-end infinite, shadow3D 2s ease-out;
+            opacity: 0;
+            animation: fadeInWave 2s ease-out forwards, waveText 3s infinite ease-in-out;
         }
 
         .typing-effect {
             overflow: hidden;
             white-space: nowrap;
-            text-shadow: 0 0 10px rgba(244, 162, 97, 0.7);
         }
 
         header p {
@@ -140,7 +112,7 @@
         .social-links a:nth-child(3) { animation: float 2.5s ease-in-out infinite 0.6s; }
 
         .social-links a:hover {
-            transform: rotateY(180deg); /* 3D flip on hover */
+            transform: scale(1.2) translateY(-5px); /* Realistic bounce effect */
             color: #2c3e50; /* Lighter blue on hover */
         }
 
@@ -160,12 +132,12 @@
             border-radius: 12px;
             border: 2px solid #0d1b2a; /* Darker blue border */
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease;
-            transform-style: preserve-3d; /* Enable 3D transforms */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 1s ease-in forwards;
         }
 
         section:hover {
-            transform: translateY(-12px) rotateX(5deg) rotateY(5deg); /* 3D tilt on hover */
+            transform: translateY(-10px); /* Realistic lift effect */
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
 
@@ -179,7 +151,6 @@
         /* Fade-In Animation for Sections */
         .fade-in {
             opacity: 0;
-            animation: fadeIn 1s ease-in forwards;
         }
 
         .fade-in:nth-child(1) { animation-delay: 0.4s; }
@@ -207,8 +178,8 @@
         }
 
         @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(30px) rotateX(-10deg); }
-            100% { opacity: 1; transform: translateY(0) rotateX(0); }
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes slideIn {
@@ -221,19 +192,15 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
+        @keyframes fadeInWave {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: #f4a261; }
-        }
-
-        @keyframes shadow3D {
-            0% { text-shadow: 0 0 0 rgba(244, 162, 97, 0); transform: translateZ(0); }
-            100% { text-shadow: 5px 5px 10px rgba(244, 162, 97, 0.7); transform: translateZ(10px); }
+        @keyframes waveText {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
         }
 
         /* Responsive Design */
@@ -254,15 +221,10 @@
     </style>
 </head>
 <body>
-    <div class="background-3d">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-    </div>
+    <div class="background-anim"></div>
     <header>
         <h1 class="typing-effect">Perfect Ikechukwu</h1>
-        <p>Matric Number: 24/208/CSC898</p>
+        <p>Matric Number: 24/208CSC/898</p>
         <p>Email: <a href="mailto:ikechukwuperfect759@gmail.com">ikechukwuperfect759@gmail.com</a></p>
         <div class="social-links">
             <a href="https://instagram.com/yourusername" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
