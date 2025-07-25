@@ -160,7 +160,7 @@
 
   <section id="contact" class="contact">
     <h2>📬 Contact</h2>
-    <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+    <p>Email: <a href="mailto:ikechukwuperfect759@gmail.com">youremail@example.com</a></p>
     <p>GitHub: <a href="https://github.com/real-saint" target="_blank">github.com/real-saint</a></p>
   </section>
 
