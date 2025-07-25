@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,10 +12,53 @@
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a2639; /* Dark blue background */
+            background-color: rgba(26, 38, 57, 0.8); /* Semi-transparent dark blue for overlay */
             color: #e6d5b8; /* Light beige text */
             scroll-behavior: smooth;
             perspective: 1000px; /* Enable 3D space */
+            overflow-x: hidden; /* Prevent horizontal scroll from 3D elements */
+            position: relative;
+        }
+
+        /* 3D Background Animation */
+        .background-3d {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1a2639; /* Base dark blue */
+            transform-style: preserve-3d;
+            animation: rotate3D 20s infinite linear;
+            z-index: -1; /* Behind content */
+        }
+
+        .background-3d::before,
+        .background-3d::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #2c3e50, #0d1b2a);
+            border-radius: 50%;
+            animation: orbit 10s infinite linear;
+        }
+
+        .background-3d::after {
+            animation-delay: -5s; /* Staggered animation */
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #0d1b2a, #2c3e50);
+        }
+
+        @keyframes rotate3D {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        @keyframes orbit {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
         /* Header Styling */
@@ -102,6 +145,8 @@
             max-width: 900px;
             margin: 3rem auto;
             padding: 0 1.5rem;
+            position: relative;
+            z-index: 1; /* Above background */
         }
 
         section {
@@ -147,6 +192,7 @@
             bottom: 0;
             width: 100%;
             animation: slideUp 1s ease-out;
+            z-index: 1; /* Above background */
         }
 
         /* Keyframe Animations */
@@ -209,6 +255,7 @@
     </style>
 </head>
 <body>
+    <div class="background-3d"></div> <!-- 3D background layer -->
     <header>
         <img src="profile-placeholder.jpg" alt="Profile Picture" class="profile-pic">
         <h1 class="typing-effect">Perfect Ikechukwu</h1>
