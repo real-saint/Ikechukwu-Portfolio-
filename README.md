@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en">
+<html lang="en">
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" type="image/png">
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -141,10 +141,34 @@ footer {
   }
 }
 
-  </style>
+
+/* Glowing effect for header */
+header h1, header p {
+  animation: glowText 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowText {
+  0% {
+    text-shadow: 0 0 5px #0f0, 0 0 10px #0f0;
+  }
+  100% {
+    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+
+
 </head>
-<body>
-  <nav>
+<header style="text-align: center; padding: 2rem 1rem; background: #000; color: #0f0; font-size: 1.2rem;">
+  <h1>Perfect Ikechukwu</h1>
+  <p>Matric Number: 24/208CSC/898</p>
+</header>
+<nav>
     <a href="#about">About</a>
     <a href="#past">Past</a>
     <a href="#present">Present</a>
