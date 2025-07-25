@@ -56,7 +56,7 @@
     @keyframes floatUp {
       0% { transform: translateY(0) scale(1); opacity: 0.6; }
       50% { transform: translateY(-300px) scale(1.2); opacity: 0.3; }
-      100% { transform: translateY(-600px) scale(0.8); opacity: 0; }
+      100% { transform: translateY(-1000px) scale(0.8); opacity: 0; }
     }
 
     .floating-bg {
@@ -64,7 +64,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: 200%;
       z-index: 1;
       pointer-events: none;
     }
@@ -79,7 +79,7 @@
     }
 
     header h1 {
-      font-size: 1.8rem; /* Reduced font size */
+      font-size: 1.8rem; /* smaller heading */
       margin-bottom: 0.5rem;
     }
 
@@ -123,6 +123,13 @@
       color: #e0f7ff;
     }
 
+    .about-me {
+      text-align: center;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      padding: 1rem 2rem;
+    }
+
     footer {
       text-align: center;
       padding: 1rem;
@@ -157,7 +164,7 @@
 </head>
 <body>
 
-  <!-- Floating background animation -->
+  <!-- Floating animation -->
   <div class="floating-bg">
     <span></span><span></span><span></span><span></span><span></span><span></span>
   </div>
@@ -168,15 +175,24 @@
     <p class="intro">Matric Number: 24/208CSC/898</p>
     <p class="intro">My Portfolio – Past • Present • Future</p>
 
-    <!-- Navigation links -->
+    <!-- Navigation -->
     <nav>
+      <a href="#about">About</a>
       <a href="#past">Past</a>
       <a href="#present">Present</a>
       <a href="#future">Future</a>
     </nav>
   </header>
 
-  <!-- Sections -->
+  <!-- About Me -->
+  <section id="about" class="about-me">
+    <h2>About Me</h2>
+    <p>Hi, I'm <strong>Perfect Ikechukwu</strong> — a creative mind passionate about tech, growth, and solving real-world problems.<br>
+    I design, build, and protect in the digital world. <br>
+    Watch this space — the <strong>future is loading...</strong></p>
+  </section>
+
+  <!-- Timeline Sections -->
   <section id="past">
     <h2>Past</h2>
     <p>I learned web designing, which gave me the foundation to create beautiful and functional websites like this one.</p>
