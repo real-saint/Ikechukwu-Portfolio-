@@ -7,72 +7,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"/>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <style>
-    body {
-      font-family: 'Roboto', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #0d1b2a;
-      color: #e6d5b8;
+    html {
       scroll-behavior: smooth;
-      overflow-x: hidden;
-      transition: background 0.4s, color 0.4s;
-      position: relative;
-    }body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.02) 0px,
-    rgba(255, 255, 255, 0.02) 1px,
-    transparent 1px,
-    transparent 4px
-  ),
-  repeating-linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.02) 0px,
-    rgba(255, 255, 255, 0.02) 1px,
-    transparent 1px,
-    transparent 4px
-  );
-  z-index: -1;
-  animation: techScroll 30s linear infinite;
-}
-
-@keyframes techScroll {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(-100px, -100px);
-  }
-}
-
-.dark-mode {
-  background: #fff;
-  color: #111;
-}
-
-.dark-mode section {
-  background: #eee;
-  color: #111;
-}
-
-.mode-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background: #f4a261;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 1000;
+    }body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1a2639 0%, #0d1b2a 100%);
+  color: #e6d5b8;
+  overflow-x: hidden;
+  transition: background 0.4s, color 0.4s;
 }
 
 .navbar {
@@ -149,7 +93,14 @@ section {
   margin-bottom: 2rem;
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-  animation: fadeIn 1s ease-in forwards;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.reveal {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 section h2 {
@@ -164,41 +115,54 @@ footer {
   color: #e6d5b8;
 }
 
-.cv-button {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
-  background: #f4a261;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.cv-button:hover {
-  background: #e76f51;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 0.7rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-button[type="submit"] {
-  background: #f4a261;
-  color: #fff;
-  border: none;
-  padding: 0.7rem 1.2rem;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
 @keyframes fadeIn { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
 @keyframes slideIn { 0% { opacity: 0; transform: translateX(-30px); } 100% { opacity: 1; transform: translateX(0); } }
 
   </style>
 </head>
+<body><header>
+  <h1><span id="typed"></span></h1>
+  <img src="https://images.unsplash.com/photo-1549921296-3a6b6b050b57?fit=crop&w=300&q=80" alt="Tech Avatar" class="profile-pic" />
+  <p>Matric Number: 24/208CSC/898</p>
+  <p>Email: <a href="mailto:ikechukwuperfect759@gmail.com">ikechukwuperfect759@gmail.com</a></p>
+  <div class="social-links">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+  </div>
+</header><main>
+  <section id="past">
+    <h2>Past: What I Have Done</h2>
+    <p>I started learning the ropes of web design, building pages with HTML and CSS. It was like trying to teach a fish to climb a tree—awkward at first, but now I'm swimming in code!</p>
+  </section>  <section id="present">
+    <h2>Present: What I Am Doing</h2>
+    <p>Currently a Computer Science student at the University of Abuja, sharpening my programming skills like a ninja with a keyboard. I’m building projects, debugging life, and drinking coffee like it’s a superpower.</p>
+  </section>  <section id="future">
+    <h2>Future: What I Plan to Do</h2>
+    <p>I'm heading toward a career in cybersecurity—because what’s cooler than being a digital bodyguard? My dream is to become the guy who stops the bad guys with just a terminal window and a smirk.</p>
+  </section>
+</main><footer>
+  <p>© 2025 Perfect Ikechukwu. All rights reserved.</p>
+</footer><script>
+  // Typed effect
+  new Typed("#typed", {
+    strings: ["Perfect Ikechukwu"],
+    typeSpeed: 60,
+    showCursor: false,
+  });
+
+  // Reveal on scroll
+  const sections = document.querySelectorAll("section");
+  const revealOnScroll = () => {
+    sections.forEach(sec => {
+      const top = sec.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100) {
+        sec.classList.add("reveal");
+      }
+    });
+  };
+
+  window.addEventListener("scroll", revealOnScroll);
+  window.addEventListener("load", revealOnScroll);
+</script></body>
+</html>
