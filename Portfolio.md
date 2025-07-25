@@ -13,8 +13,8 @@
   font-family: 'Roboto', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #1a2639 0%, #0d1b2a 100%);
-  color: #e6d5b8;
+  background: #808080; /* grey background */
+  color: #111;
   overflow-x: hidden;
   transition: background 0.4s, color 0.4s;
 }
@@ -22,7 +22,7 @@
 .navbar {
   display: flex;
   justify-content: center;
-  background: rgba(13, 27, 42, 0.9);
+  background: rgba(0, 0, 0, 0.7);
   padding: 0.5rem 1rem;
   position: sticky;
   top: 0;
@@ -30,7 +30,7 @@
 }
 
 .navbar a {
-  color: #e6d5b8;
+  color: #fff;
   text-decoration: none;
   margin: 0 1rem;
   padding: 0.5rem;
@@ -69,7 +69,7 @@ header p, .social-links {
 }
 
 .social-links a {
-  color: #e6d5b8;
+  color: #fff;
   font-size: 2rem;
   margin: 0 0.7rem;
   display: inline-block;
@@ -78,7 +78,7 @@ header p, .social-links {
 
 .social-links a:hover {
   transform: scale(1.2) translateY(-5px);
-  color: #f4a261;
+  color: #333;
 }
 
 main {
@@ -88,11 +88,12 @@ main {
 }
 
 section {
-  background-color: #2c3e50;
+  background-color: #ffffff; /* white background for sections */
+  color: #111;
   padding: 2rem;
   margin-bottom: 2rem;
   border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -111,8 +112,25 @@ section h2 {
 footer {
   text-align: center;
   padding: 1.5rem;
-  background-color: #0d1b2a;
-  color: #e6d5b8;
+  background-color: #333;
+  color: #fff;
+}
+
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(128, 128, 128, 0.8) 0%, rgba(105, 105, 105, 0.8) 100%);
+  z-index: -1;
+  animation: backgroundMove 10s ease-in-out infinite;
+}
+
+@keyframes backgroundMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes fadeIn { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
@@ -120,7 +138,7 @@ footer {
 
   </style>
 </head>
-<body><header>
+<body><div class="background-animation"></div><header>
   <h1><span id="typed"></span></h1>
   <img src="https://images.unsplash.com/photo-1549921296-3a6b6b050b57?fit=crop&w=300&q=80" alt="Tech Avatar" class="profile-pic" />
   <p>Matric Number: 24/208CSC/898</p>
