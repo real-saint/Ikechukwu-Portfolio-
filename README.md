@@ -13,8 +13,8 @@
   font-family: 'Roboto', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #808080; /* grey background */
-  color: #111;
+  background: #0b1e3c; /* dark blue background */
+  color: #ffffff; /* white font color */
   overflow-x: hidden;
   transition: background 0.4s, color 0.4s;
 }
@@ -62,10 +62,12 @@ header h1 {
   margin: 0;
   font-size: 2.8rem;
   font-weight: 700;
+  color: #fff;
 }
 
 header p, .social-links {
   animation: slideIn 1.2s ease-out;
+  color: #fff;
 }
 
 .social-links a {
@@ -78,7 +80,7 @@ header p, .social-links {
 
 .social-links a:hover {
   transform: scale(1.2) translateY(-5px);
-  color: #333;
+  color: #f4a261;
 }
 
 main {
@@ -88,7 +90,7 @@ main {
 }
 
 section {
-  background-color: #ffffff; /* white background for sections */
+  background-color: #ffffff;
   color: #111;
   padding: 2rem;
   margin-bottom: 2rem;
@@ -105,14 +107,14 @@ section.reveal {
 }
 
 section h2 {
-  color: #f4a261;
+  color: #0b1e3c;
   font-size: 1.8rem;
 }
 
 footer {
   text-align: center;
   padding: 1.5rem;
-  background-color: #333;
+  background-color: #000;
   color: #fff;
 }
 
@@ -122,9 +124,28 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(128, 128, 128, 0.8) 0%, rgba(105, 105, 105, 0.8) 100%);
+  background: linear-gradient(135deg, rgba(11, 30, 60, 0.8) 0%, rgba(5, 15, 30, 0.8) 100%);
   z-index: -1;
   animation: backgroundMove 10s ease-in-out infinite;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #f4a261;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  display: none;
+  z-index: 1000;
+}
+
+.back-to-top.show {
+  display: block;
 }
 
 @keyframes backgroundMove {
@@ -142,7 +163,7 @@ footer {
   <h1><span id="typed"></span></h1>
   <img src="https://images.unsplash.com/photo-1549921296-3a6b6b050b57?fit=crop&w=300&q=80" alt="Tech Avatar" class="profile-pic" />
   <p>Matric Number: 24/208CSC/898</p>
-  <p>Email: <a href="mailto:ikechukwuperfect759@gmail.com">ikechukwuperfect759@gmail.com</a></p>
+  <p>Email: <a href="mailto:ikechukwuperfect759@gmail.com" style="color: #f4a261;">ikechukwuperfect759@gmail.com</a></p>
   <div class="social-links">
     <a href="#"><i class="fab fa-instagram"></i></a>
     <a href="#"><i class="fab fa-x-twitter"></i></a>
@@ -161,7 +182,9 @@ footer {
   </section>
 </main><footer>
   <p>© 2025 Perfect Ikechukwu. All rights reserved.</p>
-</footer><script>
+</footer><button class="back-to-top" id="backToTop">↑</button>
+
+<script>
   // Typed effect
   new Typed("#typed", {
     strings: ["Perfect Ikechukwu"],
@@ -179,8 +202,20 @@ footer {
       }
     });
   };
-
   window.addEventListener("scroll", revealOnScroll);
   window.addEventListener("load", revealOnScroll);
+
+  // Back to top button
+  const backToTopBtn = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add("show");
+    } else {
+      backToTopBtn.classList.remove("show");
+    }
+  });
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 </script></body>
 </html>
