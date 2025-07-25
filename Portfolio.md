@@ -4,9 +4,188 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfect Ikechukwu - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2f1b0f; /* Dark brown background */
+            color: #e6d5b8; /* Light beige text */
+            scroll-behavior: smooth;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #1a0f07; /* Darker brown for header */
+            color: #e6d5b8;
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #1a2639; /* Dark blue border */
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        .typing-effect {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 2.5s steps(30, end), blink-caret 0.75s step-end infinite;
+        }
+
+        header p {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+            font-weight: 300;
+            animation: slideIn 1.2s ease-out;
+        }
+
+        header a {
+            color: #f4a261; /* Warm orange for email link */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        header a:hover {
+            color: #1a2639; /* Dark blue on hover */
+        }
+
+        /* Social Media Links Styling */
+        .social-links {
+            margin-top: 1.5rem;
+            animation: slideIn 1.4s ease-out;
+        }
+
+        .social-links a {
+            color: #e6d5b8;
+            font-size: 2rem;
+            margin: 0 0.7rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.3);
+            color: #1a2639; /* Dark blue on hover */
+        }
+
+        /* Main Content Styling */
+        main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background-color: #3c2317; /* Slightly lighter brown for sections */
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            border: 2px solid #1a2639; /* Dark blue border */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        section h2 {
+            color: #f4a261;
+            font-size: 1.8rem;
+            margin-top: 0;
+            font-weight: 700;
+        }
+
+        /* Fade-In Animation for Sections */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        .fade-in:nth-child(1) { animation-delay: 0.4s; }
+        .fade-in:nth-child(2) { animation-delay: 0.8s; }
+        .fade-in:nth-child(3) { animation-delay: 1.2s; }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #1a0f07;
+            color: #e6d5b8;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            animation: slideUp 1s ease-out;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateX(-30px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #f4a261; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            .profile-pic {
+                width: 100px;
+                height: 100px;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .social-links a {
+                font-size: 1.7rem;
+                margin: 0 0.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
