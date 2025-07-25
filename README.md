@@ -21,7 +21,7 @@
       background: linear-gradient(-45deg, #001f3f, #003366, #004080, #001f3f);
       background-size: 400% 400%;
       animation: gradientShift 15s ease infinite;
-      overflow: hidden;
+      overflow-x: hidden; /* FIXED: allows vertical scroll */
       position: relative;
     }
 
@@ -162,7 +162,7 @@
     }
 
     .floating-bg {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
