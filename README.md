@@ -21,20 +21,13 @@
       padding: 0;
       font-family: Arial, sans-serif;
       color: white;
-      background: black;
-      background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
+      background: url('https://images.unsplash.com/photo-1607082349566-187342175e2b?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
       overflow-x: hidden;
       position: relative;
     }
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Floating white bubbles */
+    /* Floating white bubbles (no delay) */
     .floating-bg span {
       position: absolute;
       display: block;
@@ -46,12 +39,12 @@
       bottom: -50px;
     }
 
-    .floating-bg span:nth-child(1) { left: 10%; animation-delay: 0s; width: 15px; height: 15px; }
-    .floating-bg span:nth-child(2) { left: 20%; animation-delay: 2s; }
-    .floating-bg span:nth-child(3) { left: 35%; animation-delay: 4s; width: 25px; height: 25px; }
-    .floating-bg span:nth-child(4) { left: 50%; animation-delay: 6s; }
-    .floating-bg span:nth-child(5) { left: 65%; animation-delay: 8s; width: 10px; height: 10px; }
-    .floating-bg span:nth-child(6) { left: 80%; animation-delay: 10s; width: 30px; height: 30px; }
+    .floating-bg span:nth-child(1) { left: 10%; width: 15px; height: 15px; }
+    .floating-bg span:nth-child(2) { left: 20%; }
+    .floating-bg span:nth-child(3) { left: 35%; width: 25px; height: 25px; }
+    .floating-bg span:nth-child(4) { left: 50%; }
+    .floating-bg span:nth-child(5) { left: 65%; width: 10px; height: 10px; }
+    .floating-bg span:nth-child(6) { left: 80%; width: 30px; height: 30px; }
 
     @keyframes floatUp {
       0% { transform: translateY(0) scale(1); opacity: 0.6; }
@@ -70,7 +63,7 @@
     }
 
     header {
-      background-color: rgba(0, 0, 0, 0.95);
+      background-color: rgba(0, 0, 0, 0.85);
       padding: 2rem 1rem 1rem;
       text-align: center;
       border-bottom: 2px solid #00bfff;
@@ -79,7 +72,7 @@
     }
 
     header h1 {
-      font-size: 1.8rem; /* smaller heading */
+      font-size: 1.8rem;
       margin-bottom: 0.5rem;
     }
 
@@ -108,9 +101,9 @@
       max-width: 800px;
       margin: 2rem auto;
       padding: 2rem;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.8);
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
       position: relative;
       z-index: 2;
     }
@@ -133,7 +126,7 @@
     footer {
       text-align: center;
       padding: 1rem;
-      background: rgba(0, 0, 0, 0.95);
+      background: rgba(0, 0, 0, 0.9);
       color: #ccc;
       margin-top: 2rem;
       position: relative;
@@ -164,7 +157,7 @@
 </head>
 <body>
 
-  <!-- Floating animation -->
+  <!-- Floating animation background -->
   <div class="floating-bg">
     <span></span><span></span><span></span><span></span><span></span><span></span>
   </div>
@@ -192,17 +185,19 @@
     Watch this space — the <strong>future is loading...</strong></p>
   </section>
 
-  <!-- Timeline Sections -->
+  <!-- Past -->
   <section id="past">
     <h2>Past</h2>
     <p>I learned web designing, which gave me the foundation to create beautiful and functional websites like this one.</p>
   </section>
 
+  <!-- Present -->
   <section id="present">
     <h2>Present</h2>
     <p>I'm currently a Computer Science student at the University of Abuja, actively building my skills in technology and problem-solving.</p>
   </section>
 
+  <!-- Future -->
   <section id="future">
     <h2>Future</h2>
     <p>I plan to pursue a career in Cybersecurity to protect systems, data, and people from digital threats.</p>
