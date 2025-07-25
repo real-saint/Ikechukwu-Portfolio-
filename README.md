@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Perfect Ikechukwu - Portfolio</title>
-  <!-- Font Awesome for icons -->
+  <!-- Font Awesome for social icons -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -21,13 +21,17 @@
       padding: 0;
       font-family: Arial, sans-serif;
       color: white;
-      background: url('https://images.unsplash.com/photo-1607082349566-187342175e2b?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-color: #000000;
+      background-image: url('https://cdn.pixabay.com/photo/2022/01/10/11/12/technology-6928592_1280.jpg');
+      background-repeat: no-repeat;
       background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
       overflow-x: hidden;
       position: relative;
     }
 
-    /* Floating white bubbles (no delay) */
+    /* Floating white animations */
     .floating-bg span {
       position: absolute;
       display: block;
@@ -157,7 +161,7 @@
 </head>
 <body>
 
-  <!-- Floating animation background -->
+  <!-- Floating animation -->
   <div class="floating-bg">
     <span></span><span></span><span></span><span></span><span></span><span></span>
   </div>
