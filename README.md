@@ -12,7 +12,6 @@
     referrerpolicy="no-referrer"
   />
   <style>
-    /* Smooth scroll */
     html {
       scroll-behavior: smooth;
     }
@@ -22,7 +21,7 @@
       padding: 0;
       font-family: Arial, sans-serif;
       color: white;
-      background: linear-gradient(-45deg, #001f3f, #003366, #004080, #001f3f);
+      background: black;
       background-size: 400% 400%;
       animation: gradientShift 15s ease infinite;
       overflow-x: hidden;
@@ -71,17 +70,21 @@
     }
 
     header {
-      background-color: rgba(0, 0, 51, 0.9);
-      color: white;
+      background-color: rgba(0, 0, 0, 0.95);
       padding: 2rem 1rem 1rem;
       text-align: center;
-      border-bottom: 4px solid #00bfff;
+      border-bottom: 2px solid #00bfff;
       position: relative;
       z-index: 2;
     }
 
+    header h1 {
+      font-size: 1.8rem; /* Reduced font size */
+      margin-bottom: 0.5rem;
+    }
+
     .intro {
-      font-size: 1.2rem;
+      font-size: 1rem;
       margin-top: 0.5rem;
     }
 
@@ -105,9 +108,9 @@
       max-width: 800px;
       margin: 2rem auto;
       padding: 2rem;
-      background: rgba(0, 51, 102, 0.85);
+      background: rgba(0, 0, 0, 0.85);
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
       position: relative;
       z-index: 2;
     }
@@ -123,7 +126,7 @@
     footer {
       text-align: center;
       padding: 1rem;
-      background: rgba(0, 38, 77, 0.9);
+      background: rgba(0, 0, 0, 0.95);
       color: #ccc;
       margin-top: 2rem;
       position: relative;
@@ -156,12 +159,7 @@
 
   <!-- Floating background animation -->
   <div class="floating-bg">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
   </div>
 
   <!-- Header -->
