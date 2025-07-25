@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfect Ikechukwu - Cybersecurity Journey</title>
+    <title>Perfect Ikechukwu - Cybersecurity Portfolio</title>
     <style>
         body {
             margin: 0;
@@ -32,6 +32,11 @@
         h1 {
             font-size: 3.5rem;
             text-shadow: 0 0 15px #00f, 0 0 30px #0ff;
+            opacity: 0;
+        }
+        h2 {
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px #0ff;
             opacity: 0;
         }
         p {
@@ -72,6 +77,7 @@
         }
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
+            h2 { font-size: 1.2rem; }
             p { font-size: 1rem; }
             .social-logos a img { width: 30px; }
         }
@@ -83,9 +89,10 @@
     <canvas id="canvas"></canvas>
     <div class="content">
         <h1 id="name">Perfect Ikechukwu</h1>
-        <p id="past">In the digital dawn, Perfect Ikechukwu ignited his passion for technology, mastering the art of web designing and coding. Crafting intricate websites and writing elegant code, he built a foundation of innovation, transforming ideas into digital realities with precision and creativity.</p>
-        <p id="present">Currently, Perfect Ikechukwu thrives as a dedicated student at the University of Abuja. Immersed in the world of computer science, he deepens his expertise, exploring advanced concepts and technologies to shape the future of the digital landscape.</p>
-        <p id="future">Looking ahead, Perfect Ikechukwu is poised to conquer the realm of cybersecurity. With a vision to safeguard digital ecosystems, he aims to become a global leader, protecting data and systems from threats in an interconnected world.</p>
+        <h2 id="matric">Matric No: 24/208CSC/898</h2>
+        <p id="past">In my early journey, I immersed myself in the world of web designing and coding. From crafting visually stunning websites to mastering languages like HTML, CSS, and JavaScript, I honed my skills, laying a robust foundation for a career in technology.</p>
+        <p id="present">Currently, I am a dedicated student at the University of Abuja, pursuing a degree in Computer Science. I am deepening my knowledge in advanced programming, algorithms, and emerging technologies, preparing to make a significant impact in the tech industry.</p>
+        <p id="future">Looking to the future, I am driven to specialize in cybersecurity. My goal is to become an expert in protecting digital infrastructures, safeguarding data, and combating cyber threats, contributing to a secure and connected global ecosystem.</p>
         <div class="social-logos">
             <a href="https://instagram.com" target="_blank" id="instagram"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
             <a href="https://x.com" target="_blank" id="twitter"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/X_icon_2.svg" alt="X"></a>
@@ -190,6 +197,7 @@
             .to("#loader", { opacity: 0, duration: 1, delay: 2, onComplete: () => loader.style.display = 'none'; })
             .to("#name", { opacity: 1, scale: 1.1, duration: 1, ease: "power2.out", textShadow: "0 0 30px #0ff" })
             .to("#name", { scale: 1, duration: 0.5 })
+            .to("#matric", { opacity: 1, duration: 1 }, "-=0.5")
             .add(typeWriter("#past", document.getElementById("past").innerText, 1))
             .to("#past", { opacity: 0, duration: 1, delay: 5 })
             .add(typeWriter("#present", document.getElementById("present").innerText, 0))
