@@ -2,89 +2,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfect Ikechukwu - Portfolio</title>
+  <title>Portfolio</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #0d1b2a;
-      color: #fff;
+      font-family: 'Inter', sans-serif;
+      background-color: #000;
+      color: #e2e8f0;
       display: flex;
+      min-height: 100vh;
     }
     nav {
       position: fixed;
-      left: 0;
       top: 0;
-      width: 220px;
+      left: 0;
+      width: 240px;
       height: 100vh;
-      background-color: #1a2639;
-      padding: 2rem 1rem;
+      background-color: #1e293b;
+      padding: 2rem 1.5rem;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
     }
     nav h1 {
-      font-size: 1.2rem;
-      color: #0ff;
-      margin-bottom: 2rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 2.5rem;
+      display: none;
     }
     nav a {
-      color: #fff;
+      color: #cbd5e1;
       text-decoration: none;
       margin: 1rem 0;
-      font-weight: 400;
-      transition: color 0.3s;
+      font-size: 1rem;
+      transition: all 0.3s;
     }
     nav a:hover {
-      color: #0ff;
+      color: #38bdf8;
+      padding-left: 5px;
     }
     main {
-      margin-left: 220px;
+      margin-left: 240px;
       padding: 3rem 2rem;
       flex: 1;
     }
     section {
       margin-bottom: 4rem;
       padding: 2rem;
-      background-color: #fff;
-      color: #000;
+      background-color: #000;
+      color: #e2e8f0;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.2);
       transition: transform 0.3s;
     }
     section:hover {
       transform: translateY(-5px);
     }
     section h2 {
-      color: #0d1b2a;
+      font-size: 1.4rem;
       margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    #past h2, #present h2, #future h2 {
+      color: #22c55e;
     }
     footer {
-      margin-left: 220px;
+      margin-left: 240px;
       padding: 2rem;
       text-align: center;
-      color: #0ff;
-      background-color: #1a2639;
+      background-color: #1e293b;
+      color: #94a3b8;
     }
     .social-icons a {
-      color: #0ff;
-      font-size: 1.5rem;
+      color: #38bdf8;
+      font-size: 1.3rem;
       margin: 0 0.5rem;
+      text-decoration: none;
+    }
+    .email a {
+      color: #38bdf8;
       text-decoration: none;
     }
     @media (max-width: 768px) {
       nav {
         width: 100%;
         height: auto;
-        position: relative;
         flex-direction: row;
         justify-content: space-around;
+        align-items: center;
+        position: static;
+      }
+      nav h1 {
+        display: none;
       }
       main, footer {
         margin-left: 0;
+        padding: 2rem 1rem;
       }
       section {
         margin: 2rem 0;
@@ -94,8 +114,7 @@
 </head>
 <body>
   <nav>
-    <h1>🚀 Perfect Ikechukwu</h1>
-    <a href="#about">About Me</a>
+    <a href="#about">About</a>
     <a href="#past">Past</a>
     <a href="#present">Present</a>
     <a href="#future">Future</a>
@@ -104,23 +123,23 @@
   <main>
     <section id="about">
       <h2>About Me</h2>
-      <p>Hi, I'm Perfect Ikechukwu, a Computer Science student at the University of Abuja. I'm deeply passionate about technology, especially web design and cybersecurity. I've built responsive websites and sharpened my skills in both frontend and backend development.</p>
+      <p>Hello! I'm Perfect Ikechukwu, a passionate Computer Science student from the University of Abuja. My journey in technology began with curiosity and evolved into a commitment to mastering web design and cybersecurity. I enjoy building websites that not only look good but also function effectively. From basic HTML pages to responsive layouts and backend integrations — I love the process.</p>
     </section>
     <section id="past">
       <h2>Past</h2>
-      <p>Started with the basics — HTML, CSS, and JavaScript. I spent time mastering the foundations of web development and gradually began building personal projects. Every error was a lesson in disguise.</p>
+      <p>I started by learning HTML and CSS to create simple web pages. Over time, I expanded my skill set to include JavaScript, Python, and version control using Git. The early projects weren’t perfect — but they taught me how to solve real-world problems using code.</p>
     </section>
     <section id="present">
       <h2>Present</h2>
-      <p>Currently studying Computer Science while actively working on small-scale projects. I’m improving my coding skills and diving deeper into programming, databases, and security protocols. I also enjoy working on visual interfaces.</p>
+      <p>Currently, I’m balancing coursework and personal projects. I’m improving my understanding of frontend and backend frameworks, building tools, and exploring how cybersecurity plays a role in every digital product. I’m also studying systems, networks, and ethical hacking in preparation for my future goals.</p>
     </section>
     <section id="future">
       <h2>Future</h2>
-      <p>My ambition is to become a cybersecurity expert. I plan to further explore ethical hacking, penetration testing, and network defense. I’m driven to protect systems and data from digital threats.</p>
+      <p>I see myself advancing into the cybersecurity field — protecting systems, securing data, and ensuring trust in digital platforms. I aim to earn industry certifications and contribute to a world where privacy and digital integrity are prioritized.</p>
     </section>
     <section id="contact">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:ikechukwuperfect759@gmail.com">ikechukwuperfect759@gmail.com</a></p>
+      <p class="email">Email: <a href="mailto:ikechukwuperfect759@gmail.com">ikechukwuperfect759@gmail.com</a></p>
       <div class="social-icons">
         <a href="#"><i class="fab fa-instagram"></i></a>
         <a href="#"><i class="fab fa-x-twitter"></i></a>
