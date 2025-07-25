@@ -14,7 +14,7 @@
     }
     header {
       background-color: #1e293b;
-      color: blue;
+      color: white;
       padding: 2rem;
       text-align: center;
     }
