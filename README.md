@@ -100,111 +100,133 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/examples/js/controls/OrbitControls.js"></script>
     <script>
-        // Three.js - Advanced Tech Background
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas'), antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-
-        // Grid
-        const gridHelper = new THREE.GridHelper(100, 50, 0x00ffff, 0x003333);
-        gridHelper.position.y = -10;
-        scene.add(gridHelper);
-
-        // Wireframe Sphere
-        const sphereGeometry = new THREE.SphereGeometry(15, 32, 16);
-        const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true, transparent: true, opacity: 0.3 });
-        const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-        scene.add(sphere);
-
-        // Particles
-        const particleCount = 2000;
-        const particlesGeometry = new THREE.BufferGeometry();
-        const posArray = new Float32Array(particleCount * 3);
-        const velocities = new Float32Array(particleCount * 3);
-        for (let i = 0; i < particleCount * 3; i += 3) {
-            posArray[i] = (Math.random() - 0.5) * 100;
-            posArray[i + 1] = (Math.random() - 0.5) * 100;
-            posArray[i + 2] = (Math.random() - 0.5) * 100;
-            velocities[i] = (Math.random() - 0.5) * 0.02;
-            velocities[i + 1] = (Math.random() - 0.5) * 0.02;
-            velocities[i + 2] = (Math.random() - 0.5) * 0.02;
+        // Fallback to local loading if CDN fails
+        let threeLoaded = false, gsapLoaded = false;
+        function loadScript(src, onLoad) {
+            const script = document.createElement('script');
+            script.src = src;
+            script.onload = onLoad;
+            document.head.appendChild(script);
         }
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        const particleMaterial = new THREE.PointsMaterial({ size: 0.05, color: 0x00ffff, transparent: true, opacity: 0.7 });
-        const particles = new THREE.Points(particlesGeometry, particleMaterial);
-        scene.add(particles);
 
-        // Lighting
-        const ambientLight = new THREE.AmbientLight(0x404040);
-        scene.add(ambientLight);
-        const pointLight = new THREE.PointLight(0x00ffff, 1, 100);
-        pointLight.position.set(10, 10, 10);
-        scene.add(pointLight);
-
-        camera.position.z = 20;
-
-        // Mouse Interaction
-        let mouseX = 0, mouseY = 0;
-        document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-            mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js', () => threeLoaded = true);
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js', () => gsapLoaded = true);
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/examples/js/controls/OrbitControls.js', () => {
+            if (threeLoaded && gsapLoaded) initScene();
         });
 
-        // Animation Loop
-        function animate() {
-            requestAnimationFrame(animate);
-            sphere.rotation.y += 0.002;
-            gridHelper.rotation.x += 0.001;
-            const positions = particlesGeometry.attributes.position.array;
-            for (let i = 0; i < particleCount * 3; i += 3) {
-                positions[i] += velocities[i] + mouseX * 0.01;
-                positions[i + 1] += velocities[i + 1] + mouseY * 0.01;
-                positions[i + 2] += velocities[i + 2];
-                if (Math.abs(positions[i]) > 50) velocities[i] *= -1;
-                if (Math.abs(positions[i + 1]) > 50) velocities[i + 1] *= -1;
-                if (Math.abs(positions[i + 2]) > 50) velocities[i + 2] *= -1;
-            }
-            particlesGeometry.attributes.position.needsUpdate = true;
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Resize Handler
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
+        function initScene() {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas'), antialias: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
-        });
 
-        // GSAP Animations with Typewriter Effect
-        function typeWriter(element, text, delay) {
-            return gsap.to(element, {
-                text: { value: text, delimiter: "" },
-                duration: text.length / 20,
-                ease: "none",
-                delay: delay,
-                onStart: () => element.innerHTML = "",
-                opacity: 1
+            // Optimized Grid
+            const gridHelper = new THREE.GridHelper(100, 50, 0x00ffff, 0x003333);
+            gridHelper.position.y = -10;
+            scene.add(gridHelper);
+
+            // Wireframe Sphere
+            const sphereGeometry = new THREE.SphereGeometry(15, 32, 16);
+            const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true, transparent: true, opacity: 0.3 });
+            const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+            scene.add(sphere);
+
+            // Reduced Particle Count
+            const particleCount = 500;
+            const particlesGeometry = new THREE.BufferGeometry();
+            const posArray = new Float32Array(particleCount * 3);
+            const velocities = new Float32Array(particleCount * 3);
+            for (let i = 0; i < particleCount * 3; i += 3) {
+                posArray[i] = (Math.random() - 0.5) * 100;
+                posArray[i + 1] = (Math.random() - 0.5) * 100;
+                posArray[i + 2] = (Math.random() - 0.5) * 100;
+                velocities[i] = (Math.random() - 0.5) * 0.02;
+                velocities[i + 1] = (Math.random() - 0.5) * 0.02;
+                velocities[i + 2] = (Math.random() - 0.5) * 0.02;
+            }
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            const particleMaterial = new THREE.PointsMaterial({ size: 0.05, color: 0x00ffff, transparent: true, opacity: 0.7 });
+            const particles = new THREE.Points(particlesGeometry, particleMaterial);
+            scene.add(particles);
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0x404040);
+            scene.add(ambientLight);
+            const pointLight = new THREE.PointLight(0x00ffff, 1, 100);
+            pointLight.position.set(10, 10, 10);
+            scene.add(pointLight);
+
+            camera.position.z = 20;
+
+            // Mouse Interaction
+            let mouseX = 0, mouseY = 0;
+            document.addEventListener('mousemove', (e) => {
+                mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+                mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
             });
-        }
 
-        gsap.timeline()
-            .to("#loader", { opacity: 0, duration: 1, delay: 2, onComplete: () => loader.style.display = 'none'; })
-            .to("#name", { opacity: 1, scale: 1.1, duration: 1, ease: "power2.out", textShadow: "0 0 30px #0ff" })
-            .to("#name", { scale: 1, duration: 0.5 })
-            .to("#matric", { opacity: 1, duration: 1 }, "-=0.5")
-            .add(typeWriter("#past", document.getElementById("past").innerText, 1))
-            .to("#past", { opacity: 0, duration: 1, delay: 5 })
-            .add(typeWriter("#present", document.getElementById("present").innerText, 0))
-            .to("#present", { opacity: 0, duration: 1, delay: 5 })
-            .add(typeWriter("#future", document.getElementById("future").innerText, 0))
-            .to("#future", { opacity: 0, duration: 1, delay: 5 })
-            .to(".social-logos a img", { opacity: 1, scale: 1, stagger: 0.3, duration: 0.5, ease: "back.out(1.7)" });
+            // Animation Loop
+            function animate() {
+                requestAnimationFrame(animate);
+                sphere.rotation.y += 0.002;
+                gridHelper.rotation.x += 0.001;
+                const positions = particlesGeometry.attributes.position.array;
+                for (let i = 0; i < particleCount * 3; i += 3) {
+                    positions[i] += velocities[i] + mouseX * 0.01;
+                    positions[i + 1] += velocities[i + 1] + mouseY * 0.01;
+                    positions[i + 2] += velocities[i + 2];
+                    if (Math.abs(positions[i]) > 50) velocities[i] *= -1;
+                    if (Math.abs(positions[i + 1]) > 50) velocities[i + 1] *= -1;
+                    if (Math.abs(positions[i + 2]) > 50) velocities[i + 2] *= -1;
+                }
+                particlesGeometry.attributes.position.needsUpdate = true;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Resize Handler
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            // GSAP Animations with Typewriter Effect and Timeout
+            function typeWriter(element, text, delay) {
+                return gsap.to(element, {
+                    text: { value: text, delimiter: "" },
+                    duration: text.length / 20,
+                    ease: "none",
+                    delay: delay,
+                    onStart: () => element.innerHTML = "",
+                    opacity: 1
+                });
+            }
+
+            const timeline = gsap.timeline();
+            timeline
+                .to("#loader", { opacity: 0, duration: 1, delay: 2, onComplete: () => loader.style.display = 'none' })
+                .to("#name", { opacity: 1, scale: 1.1, duration: 1, ease: "power2.out", textShadow: "0 0 30px #0ff" })
+                .to("#name", { scale: 1, duration: 0.5 })
+                .to("#matric", { opacity: 1, duration: 1 }, "-=0.5")
+                .add(typeWriter("#past", document.getElementById("past").innerText, 1))
+                .to("#past", { opacity: 0, duration: 1, delay: 5 })
+                .add(typeWriter("#present", document.getElementById("present").innerText, 0))
+                .to("#present", { opacity: 0, duration: 1, delay: 5 })
+                .add(typeWriter("#future", document.getElementById("future").innerText, 0))
+                .to("#future", { opacity: 0, duration: 1, delay: 5 })
+                .to(".social-logos a img", { opacity: 1, scale: 1, stagger: 0.3, duration: 0.5, ease: "back.out(1.7)" });
+
+            // Timeout to bypass loading if stuck
+            setTimeout(() => {
+                if (loader.style.display !== 'none') {
+                    loader.style.display = 'none';
+                    timeline.play();
+                }
+            }, 5000); // 5-second timeout
+        }
     </script>
 </body>
 </html>
