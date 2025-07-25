@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,6 +5,7 @@
   <title>Perfect Ikechukwu - Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous"/>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <style>
     body {
       font-family: 'Roboto', Arial, sans-serif;
@@ -15,288 +15,230 @@
       color: #e6d5b8;
       scroll-behavior: smooth;
       overflow-x: hidden;
-    }
+      transition: background 0.4s, color 0.4s;
+    }.dark-mode {
+  background: #fff;
+  color: #111;
+}
 
-    #particleCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      background: transparent;
-    }
+.dark-mode section {
+  background: #eee;
+  color: #111;
+}
 
-    .background-anim {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(26, 38, 57, 0.8) 0%, rgba(13, 27, 42, 0.8) 100%);
-      z-index: -2;
-    }
+.mode-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: #f4a261;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+}
 
-    header {
-      background-color: #0d1b2a;
-      color: #e6d5b8;
-      text-align: center;
-      padding: 3rem 2rem;
-    }
+.navbar {
+  display: flex;
+  justify-content: center;
+  background: rgba(13, 27, 42, 0.9);
+  padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 2.8rem;
-      font-weight: 700;
-      opacity: 0;
-      animation: fadeInWave 2s ease-out forwards, waveText 3s infinite ease-in-out;
-    }
+.navbar a {
+  color: #e6d5b8;
+  text-decoration: none;
+  margin: 0 1rem;
+  padding: 0.5rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
 
-    header p {
-      margin: 0.5rem 0;
-      font-size: 1.2rem;
-      font-weight: 300;
-      animation: slideIn 1.2s ease-out;
-    }
+.navbar a:hover {
+  color: #f4a261;
+}
 
-    header a {
-      color: #f4a261;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 1rem;
+  border: 4px solid #f4a261;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 1.5s ease-out;
+}
 
-    header a:hover {
-      color: #e6d5b8;
-    }
+header {
+  text-align: center;
+  padding: 3rem 2rem;
+}
 
-    .social-links {
-      margin-top: 2rem;
-      animation: slideIn 1.4s ease-out;
-    }
+header h1 {
+  margin: 0;
+  font-size: 2.8rem;
+  font-weight: 700;
+}
 
-    .social-links a {
-      color: #e6d5b8;
-      font-size: 2rem;
-      margin: 0 0.7rem;
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
+header p, .social-links {
+  animation: slideIn 1.2s ease-out;
+}
 
-    .social-links a:nth-child(1) { animation: float 2.5s ease-in-out infinite; }
-    .social-links a:nth-child(2) { animation: float 2.5s ease-in-out infinite 0.3s; }
-    .social-links a:nth-child(3) { animation: float 2.5s ease-in-out infinite 0.6s; }
+.social-links a {
+  color: #e6d5b8;
+  font-size: 2rem;
+  margin: 0 0.7rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
 
-    .social-links a:hover {
-      transform: scale(1.2) translateY(-5px);
-      color: #2c3e50;
-    }
+.social-links a:hover {
+  transform: scale(1.2) translateY(-5px);
+  color: #f4a261;
+}
 
-    main {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
+main {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
 
-    section {
-      background-color: #2c3e50;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border-radius: 12px;
-      border: 2px solid #0d1b2a;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeIn 1s ease-in forwards;
-    }
+section {
+  background-color: #2c3e50;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 1s ease-in forwards;
+}
 
-    section:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    }
+section h2 {
+  color: #f4a261;
+  font-size: 1.8rem;
+}
 
-    section h2 {
-      color: #f4a261;
-      font-size: 1.8rem;
-      margin-top: 0;
-      font-weight: 700;
-    }
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #0d1b2a;
+  color: #e6d5b8;
+}
 
-    .fade-in { opacity: 0; }
-    .fade-in:nth-child(1) { animation-delay: 0.4s; }
-    .fade-in:nth-child(2) { animation-delay: 0.8s; }
-    .fade-in:nth-child(3) { animation-delay: 1.2s; }
+.cv-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: #f4a261;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
 
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background-color: #0d1b2a;
-      color: #e6d5b8;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      animation: slideUp 1s ease-out;
-      z-index: 1;
-    }
+.cv-button:hover {
+  background: #e76f51;
+}
 
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-      100% { transform: translateY(0); }
-    }
+input, textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
 
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+button[type="submit"] {
+  background: #f4a261;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
-    @keyframes slideIn {
-      0% { opacity: 0; transform: translateX(-30px); }
-      100% { opacity: 1; transform: translateX(0); }
-    }
+@keyframes fadeIn { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { 0% { opacity: 0; transform: translateX(-30px); } 100% { opacity: 1; transform: translateX(0); } }
 
-    @keyframes slideUp {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInWave {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    @keyframes waveText {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-      100% { transform: translateY(0); }
-    }
-
-    @media (max-width: 600px) {
-      header h1 { font-size: 2.2rem; }
-      section { padding: 1.5rem; }
-      .social-links a { font-size: 1.7rem; margin: 0 0.5rem; }
-    }
   </style>
 </head>
 <body>
-  <canvas id="particleCanvas"></canvas>
-  <div class="background-anim"></div>
-
-  <header>
-    <h1 class="typing-effect">Perfect Ikechukwu</h1>
+  <button class="mode-toggle" onclick="document.body.classList.toggle('dark-mode')">🌓 Toggle Mode</button>  <header>
+    <h1><span id="typed"></span></h1>
+    <img src="me.jpg" alt="Perfect Ikechukwu" class="profile-pic" />
     <p>Matric Number: 24/208CSC/898</p>
     <p>Email: <a href="mailto:ikechukwuperfect759@gmail.com">ikechukwuperfect759@gmail.com</a></p>
     <div class="social-links">
-      <a href="https://instagram.com/yourusername" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://x.com/yourusername" target="_blank"><i class="fab fa-x-twitter"></i></a>
-      <a href="https://facebook.com/yourusername" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
     </div>
-  </header>
+  </header>  <nav class="navbar">
+    <a href="#past">Past</a>
+    <a href="#present">Present</a>
+    <a href="#future">Future</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>  <main>
+    <section>
+      <h2>Quote of the Day</h2>
+      <p id="quoteBox"></p>
+    </section><section class="fade-in" id="past">
+  <h2>Past: What I Have Done</h2>
+  <p>I have developed skills in <strong>web designing</strong>, creating responsive and user-friendly webpages using HTML and CSS.<br><br><em>"I started with &lt;div&gt; confusion and border-radius frustration — now I style like a boss. Every bug was just a misunderstood feature."</em></p>
+</section>
 
-  <main>
-    <section class="fade-in" id="past">
-      <h2>Past: What I Have Done</h2>
-      <p>
-        I have developed skills in <strong>web designing</strong>, creating responsive and user-friendly webpages using HTML and CSS.
-        <br><br>
-        <em>"I started with <strong>&lt;div&gt; confusion</strong> and <strong>border-radius frustration</strong> — now I style like a boss. Every bug was just a misunderstood feature."</em>
-      </p>
-    </section>
+<section class="fade-in" id="present">
+  <h2>Present: What I Am Doing</h2>
+  <p>Currently a <strong>Computer Science student</strong> at the University of Abuja, focusing on coursework and advancing my programming and design skills.<br><br><em>"Some people binge-watch Netflix... I debug code at 2AM and cry in CSS. But hey, learning is progress!"</em></p>
+</section>
 
-    <section class="fade-in" id="present">
-      <h2>Present: What I Am Doing</h2>
-      <p>
-        Currently a <strong>Computer Science student</strong> at the University of Abuja, focusing on coursework and advancing my programming and design skills.
-        <br><br>
-        <em>"Some people binge-watch Netflix... I debug code at 2AM and cry in CSS. But hey, learning is progress!"</em>
-      </p>
-    </section>
+<section class="fade-in" id="future">
+  <h2>Future: What I Plan to Do</h2>
+  <p>I aim to pursue a career in <strong>cybersecurity</strong>, specializing in ethical hacking and network security.<br><br><em>"I don't just want to hack the system... I want to ethically scare people into using strong passwords."</em></p>
+</section>
 
-    <section class="fade-in" id="future">
-      <h2>Future: What I Plan to Do</h2>
-      <p>
-        I aim to pursue a career in <strong>cybersecurity</strong>, specializing in areas like ethical hacking and network security.
-        <br><br>
-        <em>"I don't just want to hack the system... I want to ethically scare people into using strong passwords. Future me wears a hoodie, types fast, and saves the world one firewall at a time."</em>
-      </p>
-    </section>
-  </main>
+<section class="fade-in" id="projects">
+  <h2>Projects</h2>
+  <ul>
+    <li><strong>My First Portfolio Website</strong> – Clean, responsive, and animated.</li>
+    <li><strong>Student Login System</strong> – Login/signup system built with HTML/CSS.</li>
+    <li><strong>Anime Download App (Concept)</strong> – UI design for anime lovers.</li>
+  </ul>
+  <a href="Perfect-Ikechukwu-CV.pdf" download class="cv-button">Download My CV</a>
+</section>
 
-  <footer>
+<section class="fade-in" id="contact">
+  <h2>Contact Me</h2>
+  <form action="https://formspree.io/f/YOUR_ID" method="POST">
+    <input type="email" name="email" placeholder="Your email" required>
+    <textarea name="message" placeholder="Your message" rows="4" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+  </main>  <footer>
     <p>© 2025 Perfect Ikechukwu. All rights reserved.</p>
-  </footer>
-
-  <script>
-    const canvas = document.getElementById("particleCanvas");
-    const ctx = canvas.getContext("2d");
-    let particles = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-
-    function createParticle(x = Math.random() * canvas.width, y = Math.random() * canvas.height) {
-      return {
-        x: x,
-        y: y,
-        size: Math.random() * 2 + 1,
-        speedX: (Math.random() - 0.5) * 0.5,
-        speedY: (Math.random() - 0.5) * 0.5,
-        opacity: Math.random() * 0.5 + 0.3
-      };
-    }
-
-    for (let i = 0; i < 100; i++) {
-      particles.push(createParticle());
-    }
-
-    function drawParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(Math.PI / 4);
-        ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
-        ctx.beginPath();
-        ctx.moveTo(0, -p.size);
-        ctx.lineTo(p.size, 0);
-        ctx.lineTo(0, p.size);
-        ctx.lineTo(-p.size, 0);
-        ctx.closePath();
-        ctx.fill();
-        ctx.restore();
-
-        p.x += p.speedX;
-        p.y += p.speedY;
-
-        if (p.x < -10 || p.x > canvas.width + 10 || p.y < -10 || p.y > canvas.height + 10) {
-          Object.assign(p, createParticle());
-        }
-      });
-      requestAnimationFrame(drawParticles);
-    }
-
-    canvas.addEventListener("click", (e) => {
-      const rect = canvas.getBoundingClientRect();
-      for (let i = 0; i < 5; i++) {
-        particles.push(createParticle(e.clientX - rect.left, e.clientY - rect.top));
-      }
+  </footer>  <script>
+    new Typed('#typed', {
+      strings: ["Perfect Ikechukwu", "Web Designer", "Future Cybersecurity Expert"],
+      typeSpeed: 60,
+      backSpeed: 40,
+      loop: true
     });
 
-    canvas.addEventListener("touchstart", (e) => {
-      const touch = e.touches[0];
-      const rect = canvas.getBoundingClientRect();
-      for (let i = 0; i < 5; i++) {
-        particles.push(createParticle(touch.clientX - rect.left, touch.clientY - rect.top));
-      }
-    });
-
-    drawParticles();
-  </script>
-</body>
+    const quotes = [
+      "Success is 99% failure – So keep failing upward.",
+      "Don’t wait for opportunity. Create it.",
+      "Even syntax errors teach you something.",
+      "Discipline is remembering what you want.",
+      "Dream big. Debug harder."
+    ];
+    document.getElementById("quoteBox").innerText = quotes[Math.floor(Math.random() * quotes.length)];
+  </script></body>
 </html>
