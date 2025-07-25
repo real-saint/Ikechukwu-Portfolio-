@@ -1,6 +1,6 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+<!DOCTYPE html><html lang="en">
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" type="image/png">
+<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perfect's Cyber World</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
