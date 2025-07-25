@@ -6,10 +6,12 @@
     <title>Perfect Ikechukwu - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Perfect Ikechukwu</h1>
+        <img src="profile-placeholder.jpg" alt="Profile Picture" class="profile-pic">
+        <h1 class="typing-effect">Perfect Ikechukwu</h1>
         <p>Matric Number: 24/208/CSC898</p>
         <p>Email: <a href="mailto:ikechukwuperfect759@gmail.com">ikechukwuperfect759@gmail.com</a></p>
         <div class="social-links">
@@ -21,11 +23,11 @@
     <main>
         <section class="fade-in" id="past">
             <h2>Past: What I Have Done</h2>
-            <p>I have developed skills in <strong>web designing</strong>, creating projects using HTML and CSS to build user-friendly interfaces.</p>
+            <p>I have developed skills in <strong>web designing</strong>, creating responsive and user-friendly webpages using HTML and CSS.</p>
         </section>
         <section class="fade-in" id="present">
             <h2>Present: What I Am Doing</h2>
-            <p>Currently a <strong>Computer Science student</strong> at the University of Abuja, focusing on coursework and enhancing my programming skills.</p>
+            <p>Currently a <strong>Computer Science student</strong> at the University of Abuja, focusing on coursework and advancing my programming and design skills.</p>
         </section>
         <section class="fade-in" id="future">
             <h2>Future: What I Plan to Do</h2>
