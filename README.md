@@ -12,7 +12,11 @@
     referrerpolicy="no-referrer"
   />
   <style>
-    /* Background Gradient Animation */
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -21,7 +25,7 @@
       background: linear-gradient(-45deg, #001f3f, #003366, #004080, #001f3f);
       background-size: 400% 400%;
       animation: gradientShift 15s ease infinite;
-      overflow-x: hidden; /* FIXED: allows vertical scroll */
+      overflow-x: hidden;
       position: relative;
     }
 
@@ -31,75 +35,45 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Floating Bubbles */
+    /* Floating white bubbles */
     .floating-bg span {
       position: absolute;
       display: block;
       width: 20px;
       height: 20px;
-      background: rgba(0, 191, 255, 0.4);
+      background: rgba(255, 255, 255, 0.2);
       border-radius: 50%;
       animation: floatUp 15s linear infinite;
       bottom: -50px;
     }
 
-    .floating-bg span:nth-child(1) {
-      left: 10%;
-      animation-delay: 0s;
-      width: 15px;
-      height: 15px;
-    }
-
-    .floating-bg span:nth-child(2) {
-      left: 20%;
-      animation-delay: 2s;
-    }
-
-    .floating-bg span:nth-child(3) {
-      left: 35%;
-      animation-delay: 4s;
-      width: 25px;
-      height: 25px;
-    }
-
-    .floating-bg span:nth-child(4) {
-      left: 50%;
-      animation-delay: 6s;
-    }
-
-    .floating-bg span:nth-child(5) {
-      left: 65%;
-      animation-delay: 8s;
-      width: 10px;
-      height: 10px;
-    }
-
-    .floating-bg span:nth-child(6) {
-      left: 80%;
-      animation-delay: 10s;
-      width: 30px;
-      height: 30px;
-    }
+    .floating-bg span:nth-child(1) { left: 10%; animation-delay: 0s; width: 15px; height: 15px; }
+    .floating-bg span:nth-child(2) { left: 20%; animation-delay: 2s; }
+    .floating-bg span:nth-child(3) { left: 35%; animation-delay: 4s; width: 25px; height: 25px; }
+    .floating-bg span:nth-child(4) { left: 50%; animation-delay: 6s; }
+    .floating-bg span:nth-child(5) { left: 65%; animation-delay: 8s; width: 10px; height: 10px; }
+    .floating-bg span:nth-child(6) { left: 80%; animation-delay: 10s; width: 30px; height: 30px; }
 
     @keyframes floatUp {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.5;
-      }
-      50% {
-        transform: translateY(-300px) scale(1.2);
-        opacity: 0.3;
-      }
-      100% {
-        transform: translateY(-600px) scale(0.8);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) scale(1); opacity: 0.6; }
+      50% { transform: translateY(-300px) scale(1.2); opacity: 0.3; }
+      100% { transform: translateY(-600px) scale(0.8); opacity: 0; }
+    }
+
+    .floating-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
     }
 
     header {
       background-color: rgba(0, 0, 51, 0.9);
       color: white;
-      padding: 2rem;
+      padding: 2rem 1rem 1rem;
       text-align: center;
       border-bottom: 4px solid #00bfff;
       position: relative;
@@ -109,6 +83,22 @@
     .intro {
       font-size: 1.2rem;
       margin-top: 0.5rem;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: #00bfff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: white;
     }
 
     section {
@@ -160,21 +150,11 @@
       color: #ffffff;
       transform: scale(1.2);
     }
-
-    .floating-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Floating animated background -->
+  <!-- Floating background animation -->
   <div class="floating-bg">
     <span></span>
     <span></span>
@@ -184,27 +164,37 @@
     <span></span>
   </div>
 
+  <!-- Header -->
   <header>
     <h1>Perfect Ikechukwu</h1>
     <p class="intro">Matric Number: 24/208CSC/898</p>
     <p class="intro">My Portfolio – Past • Present • Future</p>
+
+    <!-- Navigation links -->
+    <nav>
+      <a href="#past">Past</a>
+      <a href="#present">Present</a>
+      <a href="#future">Future</a>
+    </nav>
   </header>
 
-  <section>
+  <!-- Sections -->
+  <section id="past">
     <h2>Past</h2>
     <p>I learned web designing, which gave me the foundation to create beautiful and functional websites like this one.</p>
   </section>
 
-  <section>
+  <section id="present">
     <h2>Present</h2>
     <p>I'm currently a Computer Science student at the University of Abuja, actively building my skills in technology and problem-solving.</p>
   </section>
 
-  <section>
+  <section id="future">
     <h2>Future</h2>
     <p>I plan to pursue a career in Cybersecurity to protect systems, data, and people from digital threats.</p>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="contact">
       <p>Contact: ikechukwuperfect759@gmail.com</p>
