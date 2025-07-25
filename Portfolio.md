@@ -12,7 +12,7 @@
     referrerpolicy="no-referrer"
   />
   <style>
-    /* Background Animation */
+    /* Background Gradient Animation */
     body {
       margin: 0;
       padding: 0;
@@ -21,6 +21,8 @@
       background: linear-gradient(-45deg, #001f3f, #003366, #004080, #001f3f);
       background-size: 400% 400%;
       animation: gradientShift 15s ease infinite;
+      overflow: hidden;
+      position: relative;
     }
 
     @keyframes gradientShift {
@@ -29,12 +31,79 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* Floating Bubbles */
+    .floating-bg span {
+      position: absolute;
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: rgba(0, 191, 255, 0.4);
+      border-radius: 50%;
+      animation: floatUp 15s linear infinite;
+      bottom: -50px;
+    }
+
+    .floating-bg span:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+      width: 15px;
+      height: 15px;
+    }
+
+    .floating-bg span:nth-child(2) {
+      left: 20%;
+      animation-delay: 2s;
+    }
+
+    .floating-bg span:nth-child(3) {
+      left: 35%;
+      animation-delay: 4s;
+      width: 25px;
+      height: 25px;
+    }
+
+    .floating-bg span:nth-child(4) {
+      left: 50%;
+      animation-delay: 6s;
+    }
+
+    .floating-bg span:nth-child(5) {
+      left: 65%;
+      animation-delay: 8s;
+      width: 10px;
+      height: 10px;
+    }
+
+    .floating-bg span:nth-child(6) {
+      left: 80%;
+      animation-delay: 10s;
+      width: 30px;
+      height: 30px;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translateY(-300px) scale(1.2);
+        opacity: 0.3;
+      }
+      100% {
+        transform: translateY(-600px) scale(0.8);
+        opacity: 0;
+      }
+    }
+
     header {
       background-color: rgba(0, 0, 51, 0.9);
       color: white;
       padding: 2rem;
       text-align: center;
       border-bottom: 4px solid #00bfff;
+      position: relative;
+      z-index: 2;
     }
 
     .intro {
@@ -46,9 +115,11 @@
       max-width: 800px;
       margin: 2rem auto;
       padding: 2rem;
-      background: rgba(0, 51, 102, 0.8);
+      background: rgba(0, 51, 102, 0.85);
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
     }
 
     h2 {
@@ -65,6 +136,8 @@
       background: rgba(0, 38, 77, 0.9);
       color: #ccc;
       margin-top: 2rem;
+      position: relative;
+      z-index: 2;
     }
 
     .contact {
@@ -87,9 +160,29 @@
       color: #ffffff;
       transform: scale(1.2);
     }
+
+    .floating-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Floating animated background -->
+  <div class="floating-bg">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
   <header>
     <h1>Perfect Ikechukwu</h1>
