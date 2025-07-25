@@ -18,7 +18,6 @@
   position: relative;
 }
 
-/* Lightning Background */
 .lightning {
   position: fixed;
   top: 0;
@@ -207,7 +206,19 @@ footer {
   <h1>🎮 Perfect Ikechukwu's Portfolio Quest</h1>
   <button class="start-button" onclick="startGame()">Press Start</button>
 </div><div class="game-container" id="gameContainer">
-  <!-- All game levels and sections go here (unchanged) -->
+  <div class="level" id="past">
+    <h2>🕹️ Level 1: Past</h2>
+    <p>I started learning the ropes of web design, building pages with HTML and CSS. It was like trying to teach a fish to climb a tree—awkward at first, but now I'm swimming in code!</p>
+    <div class="xp-bar"><div class="xp-fill" style="width: 60%"></div></div>
+  </div>  <div class="level" id="present">
+    <h2>⚔️ Level 2: Present</h2>
+    <p>Currently a Computer Science student at the University of Abuja, sharpening my programming skills like a ninja with a keyboard. I’m building projects, debugging life, and drinking coffee like it’s a superpower.</p>
+    <div class="xp-bar"><div class="xp-fill" style="width: 80%"></div></div>
+  </div>  <div class="level" id="future">
+    <h2>🚀 Level 3: Future</h2>
+    <p>I'm heading toward a career in cybersecurity—because what’s cooler than being a digital bodyguard? My dream is to become the guy who stops the bad guys with just a terminal window and a smirk.</p>
+    <div class="xp-bar"><div class="xp-fill" style="width: 90%"></div></div>
+  </div>
 </div><footer>
   <p>Email: <a href="mailto:ikechukwuperfect759@gmail.com" style="color:#0ff;">ikechukwuperfect759@gmail.com</a></p>
   <div class="social-icons">
