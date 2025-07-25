@@ -21,7 +21,7 @@
       padding: 0;
       font-family: Arial, sans-serif;
       color: white;
-      background: transparent;
+      background: dark blue;
       background-image: url('https://cdn.pixabay.com/photo/2022/01/10/11/12/technology-6928592_1280.jpg');
       background-repeat: no-repeat;
       background-size: cover;
@@ -31,7 +31,7 @@
       position: relative;
     }
 
-    /* Floating white animations */
+    /* Floating black animations */
     .floating-bg span {
       position: absolute;
       display: block;
