@@ -34,11 +34,7 @@
             object-fit: cover;
             margin-bottom: 1rem;
             border: 3px solid #1a2639; /* Dark blue border */
-            transition: transform 0.3s ease;
-        }
-
-        .profile-pic:hover {
-            transform: scale(1.05);
+            animation: float 3s ease-in-out infinite;
         }
 
         header h1 {
@@ -81,7 +77,12 @@
             font-size: 2rem;
             margin: 0 0.7rem;
             transition: transform 0.3s ease, color 0.3s ease;
+            display: inline-block;
         }
+
+        .social-links a:nth-child(1) { animation: float 2.5s ease-in-out infinite; }
+        .social-links a:nth-child(2) { animation: float 2.5s ease-in-out infinite 0.3s; }
+        .social-links a:nth-child(3) { animation: float 2.5s ease-in-out infinite 0.6s; }
 
         .social-links a:hover {
             transform: scale(1.3);
@@ -106,7 +107,7 @@
         }
 
         section:hover {
-            transform: translateY(-12px);
+            transform: translateY(-12px) scale(1.02); /* Lift and slight float on hover */
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
 
@@ -140,6 +141,12 @@
         }
 
         /* Keyframe Animations */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0); }
+        }
+
         @keyframes fadeIn {
             0% { opacity: 0; transform: translateY(30px); }
             100% { opacity: 1; transform: translateY(0); }
