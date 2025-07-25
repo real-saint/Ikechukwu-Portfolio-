@@ -12,7 +12,7 @@
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: rgba(26, 38, 57, 0.8); /* Semi-transparent dark blue for overlay */
+            background-color: rgba(26, 38, 57, 0.7); /* Semi-transparent dark blue for overlay */
             color: #e6d5b8; /* Light beige text */
             scroll-behavior: smooth;
             perspective: 1000px; /* Enable 3D space */
@@ -20,45 +20,64 @@
             position: relative;
         }
 
-        /* 3D Background Animation */
+        /* Realistic 3D Background Animation */
         .background-3d {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #1a2639; /* Base dark blue */
+            background: linear-gradient(135deg, #1a2639 0%, #0d1b2a 100%); /* Gradient base */
             transform-style: preserve-3d;
-            animation: rotate3D 20s infinite linear;
+            animation: rotate3D 30s infinite linear;
             z-index: -1; /* Behind content */
+            overflow: hidden;
         }
 
         .background-3d::before,
         .background-3d::after {
             content: '';
             position: absolute;
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(45deg, #2c3e50, #0d1b2a);
-            border-radius: 50%;
-            animation: orbit 10s infinite linear;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(44, 62, 80, 0.2) 0%, transparent 70%); /* Star-like particles */
+            animation: floatParticles 15s infinite ease-in-out;
         }
 
         .background-3d::after {
-            animation-delay: -5s; /* Staggered animation */
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(45deg, #0d1b2a, #2c3e50);
+            animation-delay: -7.5s; /* Staggered animation */
+            background: radial-gradient(circle, rgba(13, 27, 42, 0.2) 0%, transparent 70%);
         }
+
+        .background-3d .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(230, 213, 184, 0.8); /* Light beige particles */
+            border-radius: 50%;
+            animation: moveParticle 20s infinite linear;
+        }
+
+        .background-3d .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .background-3d .particle:nth-child(2) { left: 30%; top: 50%; animation-delay: 5s; }
+        .background-3d .particle:nth-child(3) { left: 70%; top: 30%; animation-delay: 10s; }
+        .background-3d .particle:nth-child(4) { left: 50%; top: 70%; animation-delay: 15s; }
 
         @keyframes rotate3D {
             0% { transform: rotateX(0deg) rotateY(0deg); }
             100% { transform: rotateX(360deg) rotateY(360deg); }
         }
 
-        @keyframes orbit {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        @keyframes floatParticles {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.2); }
+            100% { transform: translateY(0) scale(1); }
+        }
+
+        @keyframes moveParticle {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+            50% { transform: translate(50px, -50px) scale(0.5); opacity: 0.4; }
+            100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
         }
 
         /* Header Styling */
@@ -69,21 +88,6 @@
             padding: 3rem 2rem;
             position: relative;
             overflow: hidden;
-        }
-
-        .profile-pic {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            border: 3px solid #2c3e50; /* Lighter blue border */
-            animation: float 3s ease-in-out infinite;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-pic:hover {
-            transform: rotateY(15deg) rotateX(15deg) scale(1.1); /* 3D rotation on hover */
         }
 
         header h1 {
@@ -118,7 +122,7 @@
 
         /* Social Media Links Styling */
         .social-links {
-            margin-top: 1.5rem;
+            margin-top: 2rem; /* Adjusted for no profile pic */
             animation: slideIn 1.4s ease-out;
         }
 
@@ -238,11 +242,6 @@
                 font-size: 2.2rem;
             }
 
-            .profile-pic {
-                width: 100px;
-                height: 100px;
-            }
-
             section {
                 padding: 1.5rem;
             }
@@ -255,9 +254,13 @@
     </style>
 </head>
 <body>
-    <div class="background-3d"></div> <!-- 3D background layer -->
+    <div class="background-3d">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
     <header>
-        <img src="profile-placeholder.jpg" alt="Profile Picture" class="profile-pic">
         <h1 class="typing-effect">Perfect Ikechukwu</h1>
         <p>Matric Number: 24/208/CSC898</p>
         <p>Email: <a href="mailto:ikechukwuperfect759@gmail.com">ikechukwuperfect759@gmail.com</a></p>
