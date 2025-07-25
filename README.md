@@ -12,14 +12,15 @@
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #2f1b0f; /* Dark brown background */
+            background-color: #1a2639; /* Dark blue background */
             color: #e6d5b8; /* Light beige text */
             scroll-behavior: smooth;
+            perspective: 1000px; /* Enable 3D space */
         }
 
         /* Header Styling */
         header {
-            background-color: #1a0f07; /* Darker brown for header */
+            background-color: #0d1b2a; /* Darker blue for header */
             color: #e6d5b8;
             text-align: center;
             padding: 3rem 2rem;
@@ -33,20 +34,26 @@
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 1rem;
-            border: 3px solid #1a2639; /* Dark blue border */
+            border: 3px solid #2c3e50; /* Lighter blue border */
             animation: float 3s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: rotateY(15deg) rotateX(15deg) scale(1.1); /* 3D rotation on hover */
         }
 
         header h1 {
             margin: 0;
             font-size: 2.8rem;
             font-weight: 700;
+            animation: typing 2.5s steps(30, end), blink-caret 0.75s step-end infinite, shadow3D 2s ease-out;
         }
 
         .typing-effect {
             overflow: hidden;
             white-space: nowrap;
-            animation: typing 2.5s steps(30, end), blink-caret 0.75s step-end infinite;
+            text-shadow: 0 0 10px rgba(244, 162, 97, 0.7);
         }
 
         header p {
@@ -63,7 +70,7 @@
         }
 
         header a:hover {
-            color: #1a2639; /* Dark blue on hover */
+            color: #e6d5b8; /* Beige on hover */
         }
 
         /* Social Media Links Styling */
@@ -76,8 +83,9 @@
             color: #e6d5b8;
             font-size: 2rem;
             margin: 0 0.7rem;
-            transition: transform 0.3s ease, color 0.3s ease;
             display: inline-block;
+            transition: transform 0.3s ease;
+            position: relative;
         }
 
         .social-links a:nth-child(1) { animation: float 2.5s ease-in-out infinite; }
@@ -85,8 +93,8 @@
         .social-links a:nth-child(3) { animation: float 2.5s ease-in-out infinite 0.6s; }
 
         .social-links a:hover {
-            transform: scale(1.3);
-            color: #1a2639; /* Dark blue on hover */
+            transform: rotateY(180deg); /* 3D flip on hover */
+            color: #2c3e50; /* Lighter blue on hover */
         }
 
         /* Main Content Styling */
@@ -97,17 +105,18 @@
         }
 
         section {
-            background-color: #3c2317; /* Slightly lighter brown for sections */
+            background-color: #2c3e50; /* Lighter blue for sections */
             padding: 2rem;
             margin-bottom: 2rem;
             border-radius: 12px;
-            border: 2px solid #1a2639; /* Dark blue border */
+            border: 2px solid #0d1b2a; /* Darker blue border */
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
+            transform-style: preserve-3d; /* Enable 3D transforms */
         }
 
         section:hover {
-            transform: translateY(-12px) scale(1.02); /* Lift and slight float on hover */
+            transform: translateY(-12px) rotateX(5deg) rotateY(5deg); /* 3D tilt on hover */
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
 
@@ -132,7 +141,7 @@
         footer {
             text-align: center;
             padding: 1.5rem;
-            background-color: #1a0f07;
+            background-color: #0d1b2a;
             color: #e6d5b8;
             position: fixed;
             bottom: 0;
@@ -148,8 +157,8 @@
         }
 
         @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% { opacity: 0; transform: translateY(30px) rotateX(-10deg); }
+            100% { opacity: 1; transform: translateY(0) rotateX(0); }
         }
 
         @keyframes slideIn {
@@ -170,6 +179,11 @@
         @keyframes blink-caret {
             from, to { border-color: transparent; }
             50% { border-color: #f4a261; }
+        }
+
+        @keyframes shadow3D {
+            0% { text-shadow: 0 0 0 rgba(244, 162, 97, 0); transform: translateZ(0); }
+            100% { text-shadow: 5px 5px 10px rgba(244, 162, 97, 0.7); transform: translateZ(10px); }
         }
 
         /* Responsive Design */
