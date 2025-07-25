@@ -30,19 +30,23 @@
 
 .flash {
   animation: flashEffect 8s infinite;
-  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.2) 70%);
+  background: white;
   position: absolute;
   width: 100%;
   height: 100%;
   opacity: 0;
+  z-index: -1;
 }
 
 @keyframes flashEffect {
-  0%, 98%, 100% {
+  0%, 97%, 100% {
     opacity: 0;
   }
+  98% {
+    opacity: 0.8;
+  }
   99% {
-    opacity: 1;
+    opacity: 0.2;
   }
 }
 
@@ -114,63 +118,6 @@
   transition: width 1s ease;
 }
 
-.skills-section, .projects-section, .map-section {
-  background: #fff;
-  color: #000;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 15px #0ff;
-  margin-bottom: 2rem;
-}
-
-.skills-section h2, .projects-section h2, .map-section h2 {
-  color: #0d1b2a;
-  margin-bottom: 1rem;
-}
-
-.skill {
-  margin-bottom: 1rem;
-}
-
-.skill-label {
-  margin-bottom: 0.5rem;
-}
-
-.skill-bar {
-  background: #222;
-  height: 18px;
-  border-radius: 9px;
-  overflow: hidden;
-}
-
-.skill-fill {
-  background: #0ff;
-  height: 100%;
-  transition: width 1s ease;
-}
-
-.project-item {
-  margin: 1rem 0;
-  border-left: 4px solid #0ff;
-  padding-left: 1rem;
-}
-
-.map-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.map-tile {
-  flex: 1 1 30%;
-  background: #0d1b2a;
-  color: #0ff;
-  border: 2px dashed #0ff;
-  padding: 1rem;
-  text-align: center;
-  border-radius: 8px;
-}
-
 footer {
   text-align: center;
   padding: 2rem 1rem;
@@ -200,7 +147,7 @@ footer {
 <div class="lightning">
   <div class="flash"></div>
 </div>
-<audio id="bgMusic" loop autoplay>
+<audio id="bgMusic">
   <source src="https://files.catbox.moe/8pue4c.mp3" type="audio/mpeg">
 </audio><div class="start-screen" id="startScreen">
   <h1>🎮 Perfect Ikechukwu's Portfolio Quest</h1>
@@ -231,6 +178,10 @@ footer {
   function startGame() {
     document.getElementById("startScreen").style.display = "none";
     document.getElementById("gameContainer").style.display = "block";
+    const music = document.getElementById("bgMusic");
+    if (music) {
+      music.play().catch(e => console.log("Autoplay failed:", e));
+    }
   }
 </script></body>
 </html>
