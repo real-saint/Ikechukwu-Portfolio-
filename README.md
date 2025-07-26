@@ -48,13 +48,17 @@
     nav a:hover {
       color: white;
     }
+    @keyframes neonFloat {
+      0%, 100% { transform: translateY(0); box-shadow: 0 0 10px #0ff, 0 0 20px #0ff; }
+      50% { transform: translateY(-10px); box-shadow: 0 0 20px #0ff, 0 0 40px #0ff; }
+    }
     section {
       max-width: 800px;
       margin: 2rem auto;
       padding: 2rem;
       background: rgba(0, 0, 0, 0.4);
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+      animation: neonFloat 6s ease-in-out infinite;
       transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
     section:hover {
@@ -102,7 +106,6 @@
 <body>
   <header>
     <h1>Perfect Ikechukwu</h1>
-    <p class="intro">Matric Number: 24/208CSC/898</p>
     <p class="intro">My Portfolio – Past • Present • Future</p>
     <nav>
       <a href="#about">About</a>
